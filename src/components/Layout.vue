@@ -6,14 +6,18 @@
         <v-app-bar-title class="roboto-font font-weight-bold">Application Bar</v-app-bar-title>
 
         <template v-slot:append>
-          <v-app-bar-nav-icon class="hidden-md-and-up ml-2" @click="drawer = !drawer"></v-app-bar-nav-icon>
+          <v-app-bar-nav-icon class="ml-2 hidden-md-and-up" @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-          <nav class="gnb hidden-sm-and-down flex-grow-1">
+          <!-- <nav class="gnb hidden-sm-and-down flex-grow-1">
             <router-link to="/home">Home</router-link>
             <router-link to="/about" class="mx-3">About</router-link>
-            <router-link to="/products">Products</router-link>
+          </nav> -->
+          <nav class="gnb hidden-sm-and-down flex-grow-1">
+            <router-link v-for="(link, index) in gnbMenus" :key="index" :to="link.path" class="ml-5">
+              {{ link.name }}
+            </router-link>
           </nav>
-        </template>        
+        </template>         
       </v-app-bar>   
 
       <v-navigation-drawer
@@ -23,10 +27,10 @@
       >
         <h2>LOGO</h2>
 
-        <v-divider></v-divider>
+        <v-divider class="border-top border-top-info"></v-divider>
 
-        <v-list nav class="sidebar-menu-items lnb">
-          <v-list-item v-for="(link, index) in links" :key="index" :to="link.path" class="cursor-pointer">
+        <v-list nav class="mt-5 sidebar-menu-items lnb">
+          <v-list-item v-for="(link, index) in lnbMenus" :key="index" :to="link.path" class="cursor-pointer">
             <v-icon class="mr-5">{{ link.icon }}</v-icon> <span class="font-weight-bold">{{ link.name }}</span>
           </v-list-item>
         </v-list> 
@@ -46,10 +50,13 @@
   import { ref } from 'vue';
 
   const drawer = ref(false);
-  const links = ref([
+  const gnbMenus = ref([
+    { name: 'Home', path: '/home'},
+    { name: 'About', path: '/about'}
+  ]);
+  const lnbMenus = ref([
     { name: 'Home', path: '/home', icon: 'mdi-home' },
-    { name: 'About', path: '/about', icon: 'mdi-information' },
-    { name: 'Products', path: '/products', icon: 'mdi-cart' },
+    { name: 'About', path: '/about', icon: 'mdi-information' }
   ]);
 </script>
 

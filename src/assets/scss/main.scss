@@ -14,7 +14,7 @@
 }
 
 // 레이아웃 스타일
-.home, .about, .products{
+.home, .about{
   padding: 70px 0;
 }
 
@@ -60,6 +60,9 @@
 
   // 메뉴 활성화 스타일 
   .gnb{
+    a{
+      font-weight: 700;
+    }
     a.router-link-exact-active {
       color: #1b7cfa;
     }
