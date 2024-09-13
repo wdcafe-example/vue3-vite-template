@@ -1,6 +1,6 @@
 <template> 
   <div id="header">
-    <v-layout class="rounded rounded-md">      
+    <v-layout>      
 
       <v-app-bar :elevation="2" class="pr-4">
         <v-app-bar-title class="roboto-font font-weight-bold">Application Bar</v-app-bar-title>
@@ -27,7 +27,7 @@
       >
         <h2>LOGO</h2>
 
-        <v-divider class="border-top border-top-info"></v-divider>
+        <v-divider></v-divider>
 
         <v-list nav class="mt-5 sidebar-menu-items lnb">
           <v-list-item v-for="(link, index) in lnbMenus" :key="index" :to="link.path" class="cursor-pointer">
